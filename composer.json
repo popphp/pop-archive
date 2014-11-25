@@ -1,0 +1,26 @@
+{
+    "name": "popphp/pop-archive",
+    "description": "Pop Archive Component for PHP Framework 2",
+    "keywords": [
+        "archive",
+        "zip",
+        "tar",
+        "rar",
+        "php",
+        "pop",
+        "pop php",
+        "pop php 2"
+    ],
+    "homepage": "http://www.popphp.org/",
+    "license": "New BSD",
+    "authors": [
+        {
+            "name": "Nick Sagona",
+            "email": "dev@nolainteractive.com",
+            "homepage": "http://www.nolainteractive.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
