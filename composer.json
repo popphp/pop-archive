@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pop\\Archive": "src/"
+            "Pop\\Archive\\": "src/"
         }
     }
 }
