@@ -1,6 +1,6 @@
 {
     "name": "popphp/pop-archive",
-    "description": "Pop Archive Component for PHP Framework 2",
+    "description": "Pop Archive Component for PHP Framework",
     "keywords": [
         "archive",
         "zip",
@@ -8,8 +8,7 @@
         "rar",
         "php",
         "pop",
-        "pop php",
-        "pop php 2"
+        "pop php"
     ],
     "homepage": "http://www.popphp.org/",
     "license": "New BSD",
