@@ -13,10 +13,10 @@
 /**
  * @namespace
  */
-namespace Pop\Archive;
+namespace Pop\Archive\Compress;
 
 /**
- * Archive exception class
+ * Archive compress exception class
  *
  * @category   Pop
  * @package    Pop_Archive

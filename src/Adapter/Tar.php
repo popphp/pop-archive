@@ -15,6 +15,8 @@
  */
 namespace Pop\Archive\Adapter;
 
+use Pop\Archive\Compress;
+
 /**
  * Tar archive adapter class
  *
@@ -82,10 +84,10 @@ class Tar implements ArchiveInterface
     public function extract($to = null)
     {
         if ($this->compression == 'bz') {
-            $this->path = \Pop\Archive\Archive::decompressBz2($this->path);
+            $this->path = Compress\Bz2::decompress($this->path);
             $this->archive = new \Archive_Tar($this->path);
         } else if ($this->compression == 'gz') {
-            $this->path = \Pop\Archive\Archive::decompressGz($this->path);
+            $this->path = Compress\Gz::decompress($this->path);
             $this->archive = new \Archive_Tar($this->path);
         }
         $this->archive->extract((null !== $to) ? $to : './');

@@ -13,10 +13,10 @@
 /**
  * @namespace
  */
-namespace Pop\Archive;
+namespace Pop\Archive\Compress;
 
 /**
- * Archive exception class
+ * Archive compress interface
  *
  * @category   Pop
  * @package    Pop_Archive
@@ -25,4 +25,23 @@ namespace Pop\Archive;
  * @license    http://www.popphp.org/license     New BSD License
  * @version    2.0.0a
  */
-class Exception extends \Exception {}
+interface CompressInterface
+{
+
+    /**
+     * Compress a file
+     *
+     * @param  string $file
+     * @return mixed
+     */
+    public static function compress($file);
+
+    /**
+     * Decompress a file
+     *
+     * @param  string $file
+     * @return mixed
+     */
+    public static function decompress($file);
+
+}

@@ -21,9 +21,14 @@
     ],
     "require": {
         "php": ">=5.4.0",
+        "ext-zip": "*",
+        "ext-bz2": "*",
+        "ext-zlib": "*",
         "pear/archive_tar": "~1.0"
     },
-    
+    "suggest": {
+        "ext-rar": "To use the Rar archive adapter"
+    },
     "autoload": {
         "psr-4": {
             "Pop\\Archive\\": "src/"

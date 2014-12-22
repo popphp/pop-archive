@@ -98,7 +98,6 @@ class Archive
      */
     public function __construct($archive, $password = null, $prefix = 'Pop\\Archive\\Adapter\\')
     {
-
         $this->allowed   = self::getFormats();
         $this->fullpath  = $archive;
         $parts           = pathinfo($archive);
@@ -115,7 +114,7 @@ class Archive
         }
 
         $this->mime = $this->allowed[strtolower($this->extension)];
-        $this->setAdapter($password, $prefix);
+        $this->setAdapter($prefix, $password);
     }
 
     /**
@@ -309,23 +308,23 @@ class Archive
         }
         switch ($ext) {
             case 'gz':
-                $newArchive = self::compressGz($this->fullpath);
+                $newArchive = Compress\Gz::compress($this->fullpath);
                 break;
             case 'tgz':
-                $tmpArchive = self::compressGz($this->fullpath);
+                $tmpArchive = Compress\Gz::compress($this->fullpath);
                 $newArchive = str_replace('.tar.gz', '.tgz', $tmpArchive);
                 rename($tmpArchive, $newArchive);
                 break;
             case 'bz2':
-                $newArchive = self::compressBz2($this->fullpath);
+                $newArchive = Compress\Bz2::compress($this->fullpath);
                 break;
             case 'tbz':
-                $tmpArchive = self::compressBz2($this->fullpath);
+                $tmpArchive = Compress\Bz2::compress($this->fullpath);
                 $newArchive = str_replace('.tar.bz2', '.tbz', $tmpArchive);
                 rename($tmpArchive, $newArchive);
                 break;
             case 'tbz2':
-                $tmpArchive = self::compressBz2($this->fullpath);
+                $tmpArchive = Compress\Bz2::compress($this->fullpath);
                 $newArchive = str_replace('.tar.bz2', '.tbz2', $tmpArchive);
                 rename($tmpArchive, $newArchive);
                 break;
@@ -349,113 +348,15 @@ class Archive
         return $this;
     }
 
-    /**
-     * Compress a file with gzip
-     *
-     * @param  string $file
-     * @param  int    $level
-     * @param  int    $mode
-     * @return mixed
-     */
-    public static function compressGz($file, $level = 9, $mode = FORCE_GZIP)
-    {
-        $fullpath = realpath($file);
-        $file     = file_get_contents($file);
-
-        // Create the new Gzip file resource, write data and close it
-        $gzResource = fopen($fullpath . '.gz', 'w');
-        fwrite($gzResource, gzencode($file, $level, $mode));
-        fclose($gzResource);
-
-        return $fullpath . '.gz';
-    }
-
-    /**
-     * Decompress a file with gzip
-     *
-     * @param  string $file
-     * @return mixed
-     */
-    public static function decompressGz($file)
-    {
-        $gz = gzopen($file, 'r');
-        $uncompressed = '';
-
-        // Read the uncompressed data
-        while (!feof($gz)) {
-            $uncompressed .= gzread($gz, 4096);
-        }
-
-        // Close the Gzip compressed file and write
-        // the data to the uncompressed file
-        gzclose($gz);
-        $newFile = (stripos($file, '.tgz') !== false)
-            ? str_replace('.tgz', '.tar', $file) : str_replace('.gz', '', $file);
-
-        file_put_contents($newFile, $uncompressed);
-
-        return $newFile;
-    }
-
-    /**
-     * Compress a file with bzip2
-     *
-     * @param  string $file
-     * @return mixed
-     */
-    public static function compressBz2($file)
-    {
-        $fullpath = realpath($file);
-        $file     = file_get_contents($file);
-
-        // Create the new Bzip2 file resource, write data and close it
-        $bzResource = bzopen($fullpath . '.bz2', 'w');
-        bzwrite($bzResource, $file, strlen($file));
-        bzclose($bzResource);
-
-        return $fullpath . '.bz2';
-    }
-
-    /**
-     * Decompress a file with bzip2
-     *
-     * @param  string $file
-     * @return mixed
-     */
-    public static function decompressBz2($file)
-    {
-        $bz = bzopen($file, 'r');
-        $uncompressed = '';
-
-        // Read the uncompressed data.
-        while (!feof($bz)) {
-            $uncompressed .= bzread($bz, 4096);
-        }
-
-        // Close the Bzip2 compressed file and write
-        // the data to the uncompressed file.
-        bzclose($bz);
-        if (stripos($file, '.tbz2') !== false) {
-            $newFile = str_replace('.tbz2', '.tar', $file);
-        } else if (stripos($file, '.tbz') !== false) {
-            $newFile = str_replace('.tbz', '.tar', $file);
-        } else {
-            $newFile = str_replace('.bz2', '', $file);
-        }
-
-        file_put_contents($newFile, $uncompressed);
-
-        return $newFile;
-    }
 
     /**
      * Set the adapter based on the file name
      *
-     * @param  string $password
      * @param  string $prefix
+     * @param  string $password
      * @return void
      */
-    protected function setAdapter($password = null, $prefix)
+    protected function setAdapter($prefix, $password = null)
     {
         $ext = strtolower($this->extension);
 
