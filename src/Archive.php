@@ -354,6 +354,7 @@ class Archive
      *
      * @param  string $prefix
      * @param  string $password
+     * @throws Exception
      * @return void
      */
     protected function setAdapter($prefix, $password = null)
@@ -367,6 +368,10 @@ class Archive
         }
 
         $this->adapter = (null !== $password) ? new $class($this, $password) : new $class($this);
+
+        if (!($this->adapter instanceof Adapter\ArchiveInterface)) {
+            throw new Exception('Error: The archive adapter must implement Adapter\\ArchiveInterface');
+        }
     }
 
 }
