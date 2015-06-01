@@ -26,12 +26,20 @@
         "ext-zlib": "*",
         "pear/archive_tar": "~1.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "4.6.*"
+    },
     "suggest": {
         "ext-rar": "To use the Rar archive adapter"
     },
     "autoload": {
         "psr-4": {
             "Pop\\Archive\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pop\\Archive\\Test\\": "tests/"
         }
     },
     "extra": {
