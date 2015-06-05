@@ -10,6 +10,7 @@ class TarTest extends \PHPUnit_Framework_TestCase
     public function testAddDir()
     {
         $archive = new Archive(__DIR__ . '/test.tar');
+        $this->assertInstanceOf('Archive_Tar', $archive->adapter()->archive());
         $archive->addFiles(__DIR__ . '/tmp');
         $this->assertContains('tmp/add.txt', $archive->listFiles()[0]);
         unlink(__DIR__ . '/test.tar');
