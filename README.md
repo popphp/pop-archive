@@ -19,7 +19,7 @@ extract, package and compress files in a common archive format. The supported fo
 INSTALL
 -------
 
-Install `Pop Archive` using Composer.
+Install `pop-archive` using Composer.
 
     composer require popphp/pop-archive
 
