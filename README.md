@@ -1,19 +1,20 @@
-Pop Archive
+pop-archive
 ===========
 
 [![Build Status](https://travis-ci.org/popphp/pop-archive.svg?branch=master)](https://travis-ci.org/popphp/pop-archive)
 
 OVERVIEW
 --------
-Pop Archive is a component of the Pop PHP Framework 2. It provides a normalized interface and
-integrated adapters to let a user decompress, extract, package and compress files in a common
-archive format. The supported formats are:
+`pop-archive` provides a normalized interface and integrated adapters to let a user decompress,
+extract, package and compress files in a common archive format. The supported formats are:
 
 * tar
 * tar.gz
 * tar.bz2
 * zip
 * rar (extract-only)
+
+`pop-archive` is a component of the [Pop PHP Framework 2](http://www.popphp.org/).
 
 INSTALL
 -------
