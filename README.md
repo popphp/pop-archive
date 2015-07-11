@@ -14,7 +14,7 @@ extract, package and compress files in a common archive format. The supported fo
 * zip
 * rar (extract-only)
 
-`pop-archive` is a component of the [Pop PHP Framework 2](http://www.popphp.org/).
+`pop-archive` is a component of the [Pop PHP Framework](http://www.popphp.org/).
 
 INSTALL
 -------
