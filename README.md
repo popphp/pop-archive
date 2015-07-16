@@ -2,6 +2,7 @@ pop-archive
 ===========
 
 [![Build Status](https://travis-ci.org/popphp/pop-archive.svg?branch=master)](https://travis-ci.org/popphp/pop-archive)
+[![Coverage Status](http://www.popphp.org/cc/coverage.php?comp=pop-archive)](http://www.popphp.org/cc/pop-archive/)
 
 OVERVIEW
 --------
