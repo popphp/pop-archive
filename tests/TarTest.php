@@ -12,7 +12,16 @@ class TarTest extends \PHPUnit_Framework_TestCase
         $archive = new Archive(__DIR__ . '/test.tar');
         $this->assertInstanceOf('Archive_Tar', $archive->adapter()->archive());
         $archive->addFiles(__DIR__ . '/tmp');
-        $this->assertContains('tmp/add.txt', $archive->listFiles()[0]);
+
+        $files = $archive->listFiles();
+        foreach ($files as $file) {
+            if (substr($file, 0, -4) == '.zip') {
+                $this->assertContains('tmp/test.orig.txt', $archive->listFiles()[1]);
+            } else if (substr($file, 0, -4) == '.txt') {
+                $this->assertContains('tmp/add.txt', $archive->listFiles()[1]);
+            }
+        }
+
         unlink(__DIR__ . '/test.tar');
     }
 
