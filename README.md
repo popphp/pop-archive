@@ -2,7 +2,7 @@ pop-archive
 ===========
 
 [![Build Status](https://travis-ci.org/popphp/pop-archive.svg?branch=master)](https://travis-ci.org/popphp/pop-archive)
-[![Coverage Status](http://www.popphp.org/cc/coverage.php?comp=pop-archive)](http://www.popphp.org/cc/pop-archive/)
+[![Coverage Status](http://cc.popphp.org/coverage.php?comp=pop-archive)](http://cc.popphp.org/pop-archive/)
 
 OVERVIEW
 --------
@@ -37,7 +37,7 @@ $archive->extract('/path/to/extract/files');
 ### Extract a tar.gz archive
 
 ```php
-// It will auto-detect and automatically decompress a compressed TAR file 
+// It will auto-detect and automatically decompress a compressed TAR file
 $archive = new Pop\Archive\Archive('test.tar.gz');
 $archive->extract('/path/to/extract/files');
 ```
