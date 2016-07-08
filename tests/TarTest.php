@@ -41,9 +41,6 @@ class TarTest extends \PHPUnit_Framework_TestCase
 
     protected function emptyDir($remove = false, $path = null)
     {
-        if (null === $path) {
-            $path = $this->path;
-        }
         if (!$dh = @opendir($path)) {
             return;
         }

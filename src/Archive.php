@@ -21,7 +21,7 @@ namespace Pop\Archive;
  * @author     Nick Sagona, III <dev@nolainteractive.com>
  * @copyright  Copyright (c) 2009-2016 NOLA Interactive, LLC. (http://www.nolainteractive.com)
  * @license    http://www.popphp.org/license     New BSD License
- * @version    2.1.0
+ * @version    2.1.1
  */
 class Archive
 {
@@ -33,7 +33,6 @@ class Archive
     protected $allowed = [
         'bz2'  => 'application/bzip2',
         'gz'   => 'application/x-gzip',
-        'rar'  => 'application/x-rar-compressed',
         'tar'  => 'application/x-tar',
         'tbz'  => 'application/bzip2',
         'tbz2' => 'application/bzip2',
@@ -125,7 +124,6 @@ class Archive
         $allowed = [
             'bz2'  => 'application/bzip2',
             'gz'   => 'application/x-gzip',
-            'rar'  => 'application/x-rar-compressed',
             'tar'  => 'application/x-tar',
             'tbz'  => 'application/bzip2',
             'tbz2' => 'application/bzip2',
@@ -143,10 +141,6 @@ class Archive
         if (!function_exists('gzcompress')) {
             unset($allowed['gz']);
             unset($allowed['tgz']);
-        }
-        // Check if Rar is available.
-        if (!class_exists('RarArchive', false)) {
-            unset($allowed['rar']);
         }
 
         // Check if Tar is available.

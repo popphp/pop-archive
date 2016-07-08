@@ -13,7 +13,6 @@ extract, package and compress files in a common archive format. The supported fo
 * tar.gz
 * tar.bz2
 * zip
-* rar (extract-only)
 
 `pop-archive` is a component of the [Pop PHP Framework](http://www.popphp.org/).
 
