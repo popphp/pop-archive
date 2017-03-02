@@ -1,6 +1,10 @@
 pop-archive
 ===========
 
+END OF LIFE
+-----------
+The `pop-archive` component v2.1.1 is now end-of-life and will no longer be maintained.
+
 [![Build Status](https://travis-ci.org/popphp/pop-archive.svg?branch=master)](https://travis-ci.org/popphp/pop-archive)
 [![Coverage Status](http://cc.popphp.org/coverage.php?comp=pop-archive)](http://cc.popphp.org/pop-archive/)
 
